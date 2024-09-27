@@ -1,0 +1,60 @@
+<form id="{{form_id}}" class="form mb-15 needs-validation" novalidate>
+    <input type="hidden" />
+    {% csrf_token %}
+    <div class="card-body">
+        <div class="container">
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Treasure UUID</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg form-control-solid" placeholder="Treasure UUID" id="treasureUuidInput" name="treasureUuidInput" value="{{treasure_uuid}}" readonly disabled>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (English)</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg form-control-solid" id="titleEnInput" name="titleEnInput" value="{{title_en}}" readonly disabled>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Appellation (English)</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg form-control-solid" id="appellationEnInput" name="appellationEnInput" value="{{appellation_en}}" readonly disabled>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Media File UUID</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg form-control-solid" id="mediaUuidInput" name="mediaUuidInput" value="{{media_uuid}}" readonly disabled>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Media Type</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg form-control-solid" id="mediaTypeInput" name="mediaTypeInput" value="{{media_type}}" readonly disabled>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Media File</label><br>
+                <div class="col-lg-8">
+                    <img width="150" height="150" src="{{file_src}}"/>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">New Media File<span style="color:red">&nbsp;*</span></label>
+                <div class="col-lg-8">
+                    <div id="holder_add_temp_media" class="container-xxl">
+                        {% with form_id="holder_update_media_treasure_form" %}
+                        {% include "backend/treasures/media/add_temp_form.html" %}
+                        {% endwith %}
+                    </div>
+                    <div class="invalid-feedback">Required field.</div>
+                </div>
+            </div>
+            <input type="hidden" id="mediaTypeUuidInput" name="mediaTypeUuidInput" value="{{media_type_uuid}}">
+        </div>
+    </div>
+    <div class="card-footer d-flex justify-content-end">
+        <a href="/backend/treasures/media/?treasure_id={{treasure_uuid}}" class="btn btn-secondary">Cancel</a>
+        <button id="holder_update_media_treasure_submit" class="btn btn-success float-end" type="button">Save Changes</button>
+    </div>
+</form>

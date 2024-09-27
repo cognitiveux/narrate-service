@@ -1,0 +1,50 @@
+{% extends "backend/base.html" %}
+
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link href="{% static "/backend/assets/css/dropzone.min.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script>
+    const max_conservation_media_files = "{{max_conservation_media_files|safe}}";
+    const max_content_media_files = "{{max_content_media_files|safe}}";
+    const max_photos_media_files = "{{max_photos_media_files|safe}}";
+    const max_videos_media_files = "{{max_videos_media_files|safe}}";
+</script>
+<script src="{% static "/backend/assets/js/dropzone.min.js" %}"></script>
+<script src="{% static "/backend/js/treasures/treasures-add-api-v2.js" %}"></script>
+<script src="{% static "/backend/js/treasures/treasures-add-form-v2.js" %}"></script>
+<script src="{% static "/backend/js/treasures/treasures-media-add-api-v2.js" %}"></script>
+<script src="{% static "/backend/js/treasures/treasures-media-content-add-api-v2.js" %}"></script>
+<script src="{% static "/backend/js/treasures/treasures-media-photos-add-api-v2.js" %}"></script>
+<script src="{% static "/backend/js/treasures/treasures-media-videos-add-api-v2.js" %}"></script>
+<script>
+    $(document).ready(function () {
+        NEW_TREASURE.init();
+    });
+</script>
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="/backend/dashboard" class="link-offset-2 link-underline link-underline-opacity-0 link-opacity-75">Dashboard</a></li>
+<li class="breadcrumb-item active" aria-current="page">Add Ecclesiastical Treasure</li>
+{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h3 class="card-title">Add the details of the new Ecclesiastical Treasure</h3>
+    </div>
+    <input type="hidden" id="conservation_photos_uuid" name="conservation_photos_uuid" value="{{conservation_photos_uuid}}">
+    <input type="hidden" id="content_uuid" name="content_uuid" value="{{content_uuid}}">
+    <input type="hidden" id="photos_uuid" name="photos_uuid" value="{{photos_uuid}}">
+    <input type="hidden" id="videos_uuid" name="videos_uuid" value="{{videos_uuid}}">
+    {% with form_id="holder_new_treasure_form" %}
+    {% include "backend/treasures/add_form.html" %}
+    {% endwith %}
+</div>
+{% endblock %}

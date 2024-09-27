@@ -1,0 +1,38 @@
+{% extends "backend/base.html" %}
+
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm mb-5">
+    <div class="card-header">
+        <h3 class="card-title">{{ title }}</h3>
+        <div class="card-toolbar">
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex flex-column flex-center text-center">
+                    <h1 class="fw-bolder fs-2hx text-gray-900 mb-4">No permission</h1>
+                    <div class="fw-semibold fs-6 text-gray-500 mb-7">It seems that you do not have permission to perform this action.</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="/backend/dashboard/" class="btn btn-primary me-3">Go to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

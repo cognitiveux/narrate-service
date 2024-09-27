@@ -1,0 +1,56 @@
+{% extends "backend/authentication/auth_base.html" %}
+
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static "/backend/js/authentication/activate_account-v2.js" %}"></script>
+<script>
+    $(document).ready(function () {
+        activate_account.init();
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<main class="form-activate-account w-100 m-auto">
+    <form id="activate_account_form" class="needs-validation">
+		<a href="https://narrateproject.eu/" target="_blank">
+			<img id="imgNarrateLogo" src="{% static "/backend/assets/media/narrate.logo.dark.png" %}" class="img-fluid" style="max-width: 150px; margin-left: 50px;" alt="NARRATE" data-dark-src="{% static "/backend/assets/media/narrate.logo.dark.png" %}" data-light-src="{% static "/backend/assets/media/narrate.logo.light.png" %}" />
+		</a>
+		<a href="https://www.iky.gr/" target="_blank">
+			<img id="imgFundingLogo" src="{% static "/backend/assets/media/erasmus-iky-bg.dark.png" %}" class="img-fluid mb-4" style="max-width: 160px; margin-left: 50px; margin-top: 5px;" alt="IKY" data-dark-src="{% static "/backend/assets/media/erasmus-iky-bg.dark.png" %}" data-light-src="{% static "/backend/assets/media/erasmus-iky-bg.light.png" %}" />
+		</a>
+        <h5 class="h5 mb-3 fw-normal">Fill in the following form to activate your account</h5>
+        <div class="row mb-2 form-group">
+            <div class="col-12">
+                <label class="form-label">Email<span style="color:red">&nbsp;*</span></label>
+                <input id="email" name="email" class="form-control" type="email" required>
+                <div class="invalid-feedback">Required field.</div>
+            </div>
+        </div>
+        <div class="row mb-3 form-group">
+            <div class="col-12">
+                <label class="form-label">Activation Code<span style="color:red">&nbsp;*</span></label>
+                <input id="activation-code" name="activation-code" class="form-control" required>
+                <div class="invalid-feedback">Required field.</div>
+            </div>
+        </div>
+		<button id="activate_account_submit" class="btn btn-primary w-100 py-2" type="submit">Activate Account</button>
+		<div class="row mb-3"></div>
+		<div class="row mb-3">
+			<div class="col-12">
+				<p>Have an activated account?&nbsp;<a href="/backend/login/" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Sign in</a></p>
+			</div>
+			<div class="col-12">
+				<p>Not a member yet?&nbsp;<a href="/backend/sign_up/" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Sign up</a></p>
+			</div>
+		</div>
+        <p class="mt-5 mb-3 text-body-secondary">&copy; 2023-2024 NARRATE Project</p>
+    </form>	
+</main>
+{% endblock %}

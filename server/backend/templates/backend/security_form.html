@@ -1,0 +1,33 @@
+<form id="{{form_id}}" class="form mb-15 needs-validation" novalidate>
+    <input type="hidden" />
+    {% csrf_token %}
+    <div class="card-body">
+        <div class="container">
+            <div class="row mb-6">
+                <div class="col-lg-8">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Existing Password<span style="color:red">&nbsp;*</span></label>
+                    <input type="password" class="form-control form-control-lg" id="oldPasswordInput" name="oldPasswordInput" autocomplete="off" required>
+                    <div class="invalid-feedback">Required field.</div>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <div class="col-lg-8">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">New Password<span style="color:red">&nbsp;*</span></label>
+                    <input type="password" class="form-control form-control-lg" id="newPasswordInput" name="newPasswordInput" autocomplete="off" required>
+                    <div class="invalid-feedback">Required field. Must be at least 8 characters.</div>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <div class="col-lg-8">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Confirm New Password<span style="color:red">&nbsp;*</span></label>
+                    <input type="password" class="form-control form-control-lg" id="confirmNewPasswordInput" name="confirmNewPasswordInput" autocomplete="off" required>
+                    <div class="invalid-feedback">Required field. New Password and Confirm New Password must be the same.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer d-flex justify-content-end">
+        <a href="/backend/dashboard/" class="btn btn-secondary">Cancel</a>
+        <button id="holder_update_security_submit" class="btn btn-success float-end" type="submit">Save Changes</button>
+    </div>
+</form>

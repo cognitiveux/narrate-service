@@ -1,0 +1,55 @@
+{% extends "backend/base.html" %}
+
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link href="{% static "/backend/assets/css/datatables.min.css" %}" rel="stylesheet">
+<link href="{% static "/backend/assets/css/responsive.bootstrap5.min.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static "/backend/assets/js/datatables.min.js" %}"></script>
+<script src="{% static "/backend/assets/js/dataTables.responsive.min.js" %}"></script>
+<script defer src="{% static "/backend/js/treasures/treasures-list-v2.js" %}"></script>
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+{% endblock %}
+				
+
+{% block content %}
+
+{% with item="Management of Ecclesiastical Treasures" %}
+{% with search_table_text="Ecclesiastical Treasures" %}
+{% with action=True %}
+{% with is_add_btn=True %}
+{% with action_name="Add New Ecclesiastical Treasure" %}
+{% with action_event="addNewTreasurePage()" %}
+{% with table_id="datatable_treasures" %}
+{% with filters_area=True %}
+{% with search_filter_name="Search" %}
+{% with search_filter_event="applyTreasuresFilter()" %}
+{% with reset_filter_name="Reset" %}
+{% with reset_filter_event="resetTreasuresFilter()" %}
+{% with filters_area_freetext=True %}
+{% with filters_area_exactmatch=True %}
+{% include "backend/assets_and_tools/list_template.html" %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+
+{% endblock %}

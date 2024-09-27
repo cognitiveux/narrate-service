@@ -1,0 +1,303 @@
+<form id="{{form_id}}" class="form mb-15">
+    <input type="hidden" />
+    {% csrf_token %}
+    <div class="card-body">
+        <div class="container">
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Treasure UUID</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="treasure_id" name="treasure_id" readonly disabled>
+                </div>
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Added by (email)</label>
+                <div class="col-lg-8">
+                    <a href="" class="form-control form-control-lg" id="user_email" name="user_email" readonly disabled></a>
+                </div>
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Organization</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="user_organization" name="user_organization" readonly disabled>
+                </div>
+            </div>
+            <ul class="nav nav-pills" id="navTabs" role="tablist">
+                <li class="nav-item">
+                  <button class="nav-link active" id="tab1-tab" data-bs-toggle="pill" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">Name and Description</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" id="tab2-tab" data-bs-toggle="pill" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="true">Characteristics</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" id="tab3-tab" data-bs-toggle="pill" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="true">Documentation and Conservation</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" id="tab4-tab" data-bs-toggle="pill" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="true">Objects and Collection</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="tab5-tab" data-bs-toggle="pill" data-bs-target="#tab5" type="button" role="tab" aria-controls="tab5" aria-selected="true">Content, Photos, and Videos</button>
+                </li>
+            </ul>
+            <div class="tab-content mt-2">
+              <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (English)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="titleEnInput" name="titleEnInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (Greek)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="titleGrInput" name="titleGrInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (Bulgarian)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="titleBgInput" name="titleBgInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (Turkish)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="titleTkInput" name="titleTkInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Appellation (English)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="appellationEnInput" name="appellationEnInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Appellation (Greek)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="appellationGrInput" name="appellationGrInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Appellation (Bulgarian)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="appellationBgInput" name="appellationBgInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Appellation (Turkish)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="appellationTkInput" name="appellationTkInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Existing Object Code</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="existingObjCodeInput" name="existingObjCodeInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Description (Short Version)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="descShortInput" name="descShortInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Description (Extended Version)</label>
+                    <div class="col-lg-8">
+                        <textarea rows=5 class="form-control form-control-lg" id="descExtInput" name="descExtInput" readonly disabled></textarea>
+                    </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Time Span</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="timeSpanInput" name="timeSpanInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Kind</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="kindInput" name="kindInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Creator</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="creatorInput" name="creatorInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Beginning of Existence</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="beginningOfExistenceInput" name="beginningOfExistenceInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Was in Church</label>
+                    <div class="col-lg-8 d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input w-45px h-30px" type="checkbox" id="wasInChurchInput" readonly disabled/>
+                            <label class="form-check-label" for="wasInChurchInput"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Was in Another Country</label>
+                    <div class="col-lg-8 d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input w-45px h-30px" type="checkbox" id="wasInAnotherCountryInput" readonly disabled/>
+                            <label class="form-check-label" for="wasInAnotherCountryInput"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Was Lost and Found</label>
+                    <div class="col-lg-8 d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input w-45px h-30px" type="checkbox" id="wasLostAndFoundInput" readonly disabled/>
+                            <label class="form-check-label" for="wasLostAndFoundInput"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Dimension</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="dimensionInput" name="dimensionInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Material</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="materialInput" name="materialInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Inscription</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="inscriptionInput" name="inscriptionInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Manuscript Text</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="manuscriptTextInput" name="manuscriptTextInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Event Information</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="eventInformationInput" name="eventInformationInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Position of Treasure</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="positionOfTreasureInput" name="positionOfTreasureInput" readonly disabled>
+                    </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Previous Documentation</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="previousDocumentationInput" name="previousDocumentationInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Relevant Bibliography</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="relevantBibliographyInput" name="relevantBibliographyInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Preservation Status</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="preservationStatusInput" name="preservationStatusInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Conservation Status</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="conservationStatusInput" name="conservationStatusInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">People that Help with Documentation</label>
+                    <div>
+                        <input type="text" class="form-control form-control-lg" id="firstPersonInput" name="firstPersonInput" readonly disabled>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control form-control-lg" id="secondPersonInput" name="secondPersonInput" readonly disabled>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control form-control-lg" id="thirdPersonInput" name="thirdPersonInput" readonly disabled>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6"><strong>Conservation Photos</strong></label>
+                    <table id="conservationMedia" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Group of Objects</label>
+                <div>
+                    <input type="text" class="form-control form-control-lg" id="firstGroupInput" name="firstGroupInput" readonly disabled>
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-lg" id="secondGroupInput" name="secondGroupInput" readonly disabled>
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-lg" id="thirdGroupInput" name="thirdGroupInput" readonly disabled>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Collection</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="collectionInput" name="collectionInput" readonly disabled>
+                </div>
+            </div>
+            </div>
+
+              <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6"><strong>Content</strong></label>
+                    <table id="contentMedia" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6"><strong>Photos</strong></label>
+                    <table id="photosMedia" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6"><strong>Videos</strong></label>
+                    <table id="videosMedia" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,36 @@
+{% extends "backend/base.html" %}
+
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link href="{% static "/backend/assets/css/datatables.min.css" %}" rel="stylesheet">
+<link href="{% static "/backend/assets/css/responsive.bootstrap5.min.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static "/backend/assets/js/datatables.min.js" %}"></script>
+<script src="{% static "/backend/assets/js/dataTables.responsive.min.js" %}"></script>
+<script defer src="{% static "/backend/js/treasures/treasures-view-api-v2.js" %}"></script>
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="/backend/dashboard" class="link-offset-2 link-underline link-underline-opacity-0 link-opacity-75">Dashboard</a></li>
+<li class="breadcrumb-item active" aria-current="page">View Ecclesiastical Treasure</li>
+{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h3 class="card-title">View details of Ecclesiastical Treasure</h3>
+    </div>
+    {% with form_id="holder_view_treasure_form" %}
+    {% include "backend/treasures/view_form.html" %}
+    {% endwith %}
+    <div class="card-footer d-flex justify-content-end">
+        <a id="{{cancel_btn_id}}" href="/backend/dashboard/"
+            class="btn btn-secondary">Cancel</a>
+    </div>
+</div>
+{% endblock %}

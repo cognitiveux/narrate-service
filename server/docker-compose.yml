@@ -1,0 +1,71 @@
+version: '3'
+
+volumes:
+  narrate-db-data:
+
+networks:
+  web:
+    external: true
+
+services:
+  narrate-postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - narrate-db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    networks:
+      - web
+    ports:
+        - "5678:5432"
+  narrate-server:
+    build: .
+    command: bash -c "python3 manage.py makemigrations backend && python3 manage.py migrate django_celery_results && python3 manage.py migrate && python3 manage.py collectstatic --no-input && python3 manage.py runserver 0.0.0.0:10000"
+    container_name: narrate-server
+    env_file:
+      - ./django_variables.env
+    volumes:
+      - .:/code
+      - ./static/:/static
+      - ./staticfiles/:/code/staticfiles
+    ports:
+        - "10000:10000"
+    depends_on:
+      - narrate-postgres
+      - narrate-rabbit
+    stdin_open: true
+    tty: true
+    networks:
+      - web
+  narrate-rabbit:
+    image: "rabbitmq:3-management"
+    hostname: "narrate-rabbit"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "16672:15672"
+      - "6672:5672"
+    labels:
+      NAME: "narrate-rabbit"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - web
+  narrate-celery:
+    build: .
+    env_file:
+      - ./django_variables.env
+    working_dir: /code
+    command:  ./init_celery.sh
+    links:
+      - narrate-rabbit
+    volumes:
+      - .:/code
+    ports:
+      - "6555:5555"
+    networks:
+      - web

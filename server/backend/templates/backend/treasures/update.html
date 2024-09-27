@@ -1,0 +1,34 @@
+{% extends "backend/base.html" %}
+
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static "/backend/js/treasures/treasures-update-api-v2.js" %}"></script>
+<script src="{% static "/backend/js/treasures/treasures-update-form-v2.js" %}"></script>
+<script>
+    $(document).ready(function () {
+        UPDATE_TREASURE.init();
+    });
+</script>
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="/backend/dashboard" class="link-offset-2 link-underline link-underline-opacity-0 link-opacity-75">Dashboard</a></li>
+<li class="breadcrumb-item active" aria-current="page">Update Ecclesiastical Treasure</li>
+{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h3 class="card-title">Update the details of an existing Ecclesiastical Treasure</h3>
+    </div>
+    {% with form_id="holder_update_treasure_form" %}
+    {% include "backend/treasures/update_form.html" %}
+    {% endwith %}
+</div>
+{% endblock %}

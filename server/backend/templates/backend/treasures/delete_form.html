@@ -1,0 +1,31 @@
+<form id="{{form_id}}" class="form mb-15">
+    <input type="hidden" />
+    {% csrf_token %}
+    <div class="card-body">
+        <div class="container">
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Treasure UUID</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="treasureUuidInput" name="treasureUuidInput" value="{{treasure_uuid}}" readonly disabled>
+                </div>
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (English)</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="titleEnInput" name="titleEnInput" value="{{title_en}}" readonly disabled>
+                </div>
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Appellation (English)</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="appellationEnInput" name="appellationEnInput" value="{{appellation_en}}" readonly disabled>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <div class="col-lg-12">
+                    <span><em>Important Note: Deleting an Ecclesiastical Treasure will also delete the media files (if any) associated to it</em></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer d-flex justify-content-end">
+        <a href="/backend/dashboard/" class="btn btn-secondary">Cancel</a>
+        <button id="holder_delete_treasure_submit" class="btn btn-danger float-end" type="submit">Delete</button>
+    </div>
+</form>

@@ -1,0 +1,88 @@
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h3 class="card-title">{{item}}</h3>
+        <div class="card-toolbar">
+            {% if is_editable %}
+                {% if action %}
+                <button type="button" class="btn btn-sm btn-primary float-end" onclick={{action_event}}>
+                    {% if is_add_btn %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>
+                    {% endif %}
+                    {{action_name}}
+                </button>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="card-body">
+        {% if filters_area %}
+        <div id="filterArea" class="row" style="filter: blur(1.0rem);">
+            {% if filters_area_freetext %}
+            <div class="col-lg-4 mb-5">
+                <label class="form-label">Search for {{search_table_text}}</label>
+                <input class="form-control form-control-solid" placeholder="Enter Search Term" id="free_text_term" autocomplete="off"/>
+                <br/>
+                {% if filters_area_exactmatch %}
+                <label class="form-label" for="exactmatch-check">Exact Match</label>
+                <input type="checkbox" class="form-check-input" id="exactmatch-check">
+                <br/>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+
+        <button id="btnApplyFilter" type="button" class="btn btn-sm btn-outline-primary" onclick={{search_filter_event}}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+            </svg>
+            {{search_filter_name}}
+        </button>
+        <button id="btnResetFilter" type="button" class="btn btn-sm btn-outline-secondary" onclick={{reset_filter_event}}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/>
+                <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"/>
+            </svg>
+            {{reset_filter_name}}
+        </button>
+
+        <hr/>
+        {% endif %}
+
+        {% if show_treasure_details %}
+        <div class="container">
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Treasure UUID</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="treasureUuidInput" name="treasureUuidInput" value="{{treasure_uuid}}" readonly disabled>
+                </div>
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (English)</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="titleEnInput" name="titleEnInput" value="{{title_en}}" readonly disabled>
+                </div>
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Appellation (English)</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="appellationEnInput" name="appellationEnInput" value="{{appellation_en}}" readonly disabled>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <table id="{{table_id}}" class="table table-hover" style="width:100%">
+            <thead>
+                <tr>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    {% if show_cancel_footer %}
+    <div class="card-footer d-flex justify-content-end">
+        <a id="{{cancel_btn_id}}" href="/backend/dashboard/"
+            class="btn btn-secondary">Cancel</a>
+    </div>
+    {% endif %}
+</div>

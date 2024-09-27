@@ -1,0 +1,38 @@
+<form id="{{form_id}}" class="form mb-15 needs-validation" novalidate>
+    <input type="hidden" />
+    {% csrf_token %}
+    <div class="card-body">
+        <div class="container">
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Treasure UUID</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="treasureUuidInput" name="treasureUuidInput" value="{{treasure_uuid}}" readonly disabled>
+                </div>
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (English)</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="titleEnInput" name="titleEnInput" value="{{title_en}}" readonly disabled>
+                </div>
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Appellation (English)</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="appellationEnInput" name="appellationEnInput" value="{{appellation_en}}" readonly disabled>
+                </div>
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Media File UUID</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="mediaUuidInput" name="mediaUuidInput" value="{{media_uuid}}" readonly disabled>
+                </div>
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Media Type</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control form-control-lg" id="mediaTypeInput" name="mediaTypeInput" value="{{media_type}}" readonly disabled>
+                </div>
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Media File</label>
+                <div class="col-lg-8">
+                    <img width="150" height="150" src="{{file_src}}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer d-flex justify-content-end">
+        <a href="/backend/treasures/media/?treasure_id={{treasure_uuid}}" class="btn btn-secondary">Cancel</a>
+        <button id="holder_delete_media_treasure_submit" class="btn btn-danger float-end" type="submit">Delete</button>
+    </div>
+</form>

@@ -1,0 +1,44 @@
+{% extends "backend/base.html" %}
+
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link href="{% static "/backend/assets/css/datatables.min.css" %}" rel="stylesheet">
+<link href="{% static "/backend/assets/css/responsive.bootstrap5.min.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static "/backend/assets/js/datatables.min.js" %}"></script>
+<script src="{% static "/backend/assets/js/dataTables.responsive.min.js" %}"></script>
+<script src="{% static "/backend/js/treasures/treasures-media-list-v2.js" %}"></script>
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="/backend/dashboard" class="link-offset-2 link-underline link-underline-opacity-0 link-opacity-75">Dashboard</a></li>
+<li class="breadcrumb-item active" aria-current="page">Manage Media of Ecclesiastical Treasure</li>
+{% endblock %}
+
+{% block content %}
+
+
+{% with item="Media Files of an existing Ecclesiastical Treasure" %}
+{% with action=True %}
+{% with is_add_btn=True %}
+{% with action_name="Upload New Media for Ecclesiastical Treasure" %}
+{% with action_event="uploadNewPhotosTreasurePage()" %}
+{% with table_id="datatable_treasures_media" %}
+{% with show_treasure_details=True %}
+{% with show_cancel_footer=True %}
+{% include "backend/assets_and_tools/list_template.html" %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+
+{% endblock %}

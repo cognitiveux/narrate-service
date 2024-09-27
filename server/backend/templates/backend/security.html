@@ -1,0 +1,32 @@
+{% extends "backend/base.html" %}
+
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static "/backend/js/security-update-api-v2.js" %}"></script>
+<script>
+    $(document).ready(function () {
+        UPDATE_SECURITY.init();
+    });
+</script>
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item active" aria-current="page">Security Settings</li>
+{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h3 class="card-title">Update Password</h3>
+    </div>
+    {% with form_id="holder_update_security_form" %}
+    {% include "backend/security_form.html" %}
+    {% endwith %}
+</div>
+{% endblock %}

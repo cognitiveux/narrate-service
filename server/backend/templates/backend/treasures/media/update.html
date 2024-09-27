@@ -1,0 +1,38 @@
+{% extends "backend/base.html" %}
+
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link href="{% static "/backend/assets/css/dropzone.min.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static "/backend/assets/js/dropzone.min.js" %}"></script>
+<script src="{% static "/backend/js/treasures/treasures-media-update-api-v2.js" %}"></script>
+<script>
+    $(document).ready(function () {
+        UPDATE_MEDIA_TREASURE.init();
+    });
+</script>
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="/backend/dashboard" class="link-offset-2 link-underline link-underline-opacity-0 link-opacity-75">Dashboard</a></li>
+<li class="breadcrumb-item"><a href="/backend/treasures/media/?treasure_id={{treasure_uuid}}" class="link-offset-2 link-underline link-underline-opacity-0 link-opacity-75">Manage Media of Ecclesiastical Treasure</a></li>
+<li class="breadcrumb-item active" aria-current="page">Update Media of Ecclesiastical Treasure</li>
+{% endblock %}
+
+
+{% block content %}
+<input type="hidden" id="conservation_photos_uuid" name="conservation_photos_uuid" value="{{conservation_photos_uuid}}">
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h3 class="card-title">Update existing media of Ecclesiastical Treasure</h3>
+    </div>
+    {% with form_id="holder_update_media_treasure_form" %}
+    {% include "backend/treasures/media/update_form.html" %}
+    {% endwith %}
+</div>
+{% endblock %}

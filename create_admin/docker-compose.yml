@@ -1,0 +1,14 @@
+version: '3'
+
+networks:
+  web:
+    external: true
+
+services:
+  insert-db:
+    build: .
+    command: bash -c "python3 /code/main.py"
+    volumes:
+      - .:/code
+    networks:
+      - web

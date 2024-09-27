@@ -1,0 +1,16 @@
+celery==5.3.6
+Django==4.0.4
+django-celery-results==2.5.1
+django-cors-headers
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.1
+drf-yasg==1.21.7
+flower==2.0.0
+gevent==24.2.1
+gunicorn==21.0.1
+psycopg2==2.9.9
+pyjwt==2.8.0
+django-extensions
+six==1.16.0
+requests==2.32.3
+Pillow==10.4.0

@@ -1,0 +1,80 @@
+version: '3'
+
+volumes:
+  narrate-db-data:
+
+networks:
+  web:
+    external: true
+
+services:
+  narrate-postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - narrate-db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    networks:
+      - web
+  narrate-nginx:
+    image: nginx
+    labels:
+      - traefik.frontend.rule=Host:YOUR_DOMAIN.com, www.YOUR_DOMAIN.com
+      - traefik.backend=narrate-nginx
+      - traefik.port=80
+      - traefik.enable=true
+      - traefik.frontend.redirect.entryPoint=https
+    container_name: narrate-nginx
+    volumes:
+      - ./config/nginx/:/etc/nginx/conf.d
+      - ./staticfiles:/static
+    depends_on:
+      - narrate-server
+    networks:
+      - web
+  narrate-server:
+    build: .
+    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate django_celery_results && python3 manage.py collectstatic --no-input && gunicorn --config=/code/config/gunicorn/config.py narrate_project.wsgi:application"
+    container_name: narrate-server
+    env_file:
+      - ./django_variables.env
+    volumes:
+      - .:/code
+      - ./static/:/static
+      - ./staticfiles/:/code/staticfiles
+    expose:
+        - "10000"
+    depends_on:
+      - narrate-postgres
+      - narrate-rabbit
+    stdin_open: true
+    tty: true
+    networks:
+      - web
+  narrate-rabbit:
+    image: "rabbitmq:3-management"
+    hostname: "narrate-rabbit"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    labels:
+      NAME: "narrate-rabbit"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - web
+  narrate-celery:
+    build: .
+    env_file:
+      - ./django_variables.env
+    working_dir: /code
+    command:  ./init_celery.sh
+    links:
+      - narrate-rabbit
+    volumes:
+      - .:/code
+    networks:
+      - web

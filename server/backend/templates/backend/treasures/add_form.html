@@ -1,0 +1,309 @@
+<form id="{{form_id}}" class="form mb-15 needs-validation" novalidate>
+    <input type="hidden" />
+    {% csrf_token %}
+    <div class="card-body">
+        <div class="container">
+            <ul class="nav nav-pills" id="navTabs" role="tablist">
+              <li class="nav-item">
+                <button class="nav-link active" id="tab1-tab" data-bs-toggle="pill" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">Name and Description</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" id="tab2-tab" data-bs-toggle="pill" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="true">Characteristics</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" id="tab3-tab" data-bs-toggle="pill" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="true">Documentation and Conservation</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" id="tab4-tab" data-bs-toggle="pill" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="true">Objects and Collection</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" id="tab5-tab" data-bs-toggle="pill" data-bs-target="#tab5" type="button" role="tab" aria-controls="tab5" aria-selected="true">Content, Photos, and Videos</button>
+              </li>
+            </ul>
+        </div>
+
+        <div class="tab-content mt-2">
+            <!-- Tab 1 -->
+            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (English)<span style="color:red">&nbsp;*</span></label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="titleEnInput" name="titleEnInput" required>
+                        <div class="invalid-feedback">Required field.</div>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (Greek)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="titleGrInput" name="titleGrInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (Bulgarian)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="titleBgInput" name="titleBgInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Title (Turkish)</label>
+                    <div class="col-lg-8">
+                        <input type="text"class="form-control form-control-lg" id="titleTkInput" name="titleTkInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Appellation (English)<span style="color:red">&nbsp;*</span></label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="appellationEnInput" name="appellationEnInput" required>
+                        <div class="invalid-feedback">Required field.</div>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Appellation (Greek)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="appellationGrInput" name="appellationGrInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Appellation (Bulgarian)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="appellationBgInput" name="appellationBgInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Appellation (Turkish)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="appellationTkInput" name="appellationTkInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Existing Object Code</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="existingObjCodeInput" name="existingObjCodeInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Description (Short Version)</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="descShortInput" name="descShortInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Description (Extended Version)</label>
+                    <div class="col-lg-8">
+                        <textarea rows=5 class="form-control form-control-lg" id="descExtInput" name="descExtInput"></textarea>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-end">
+                    <a href="/backend/dashboard/" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+            <!-- Tab 1 -->
+
+            <!-- Tab 2 -->
+            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Time Span</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="timeSpanInput" name="timeSpanInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Kind</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="kindInput" name="kindInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Creator</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="creatorInput" name="creatorInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Beginning of Existence</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="beginningOfExistenceInput" name="beginningOfExistenceInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Was in Church</label>
+                    <div class="col-lg-8 d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input w-45px h-30px" type="checkbox" id="wasInChurchInput"/>
+                            <label class="form-check-label" for="wasInChurchInput"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Was in Another Country</label>
+                    <div class="col-lg-8 d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input w-45px h-30px" type="checkbox" id="wasInAnotherCountryInput"/>
+                            <label class="form-check-label" for="wasInAnotherCountryInput"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Was Lost and Found</label>
+                    <div class="col-lg-8 d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input w-45px h-30px" type="checkbox" id="wasLostAndFoundInput"/>
+                            <label class="form-check-label" for="wasLostAndFoundInput"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Dimension</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="dimensionInput" name="dimensionInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Material</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="materialInput" name="materialInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Inscription</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="inscriptionInput" name="inscriptionInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Manuscript Text</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="manuscriptTextInput" name="manuscriptTextInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Event Information</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="eventInformationInput" name="eventInformationInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Position of Treasure</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="positionOfTreasureInput" name="positionOfTreasureInput">
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-end">
+                    <a href="/backend/dashboard/" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+            <!-- Tab 2 -->
+
+            <!-- Tab 3 -->
+            <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Previous Documentation</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="previousDocumentationInput" name="previousDocumentationInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Relevant Bibliography</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="relevantBibliographyInput" name="relevantBibliographyInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Preservation Status</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="preservationStatusInput" name="preservationStatusInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Conservation Status</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="conservationStatusInput" name="conservationStatusInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">People that Help with Documentation</label>
+                    <div>
+                        <input type="text" class="form-control form-control-lg" id="firstPersonInput" name="firstPersonInput">
+                    </div>
+                    <div>
+                        <input type="text" class="form-control form-control-lg" id="secondPersonInput" name="secondPersonInput">
+                    </div>
+                    <div>
+                        <input type="text" class="form-control form-control-lg" id="thirdPersonInput" name="thirdPersonInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6"><strong>Conservation Photos</strong></label>
+                    <div id="holder_add_conservation_media" class="container-xxl">
+                        {% with form_id="holder_add_conservation_media_form" %}
+                        {% include "backend/treasures/media/add_form.html" %}
+                        {% endwith %}
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-end">
+                    <a href="/backend/dashboard/" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+            <!-- Tab 3 -->
+
+            <!-- Tab 4 -->
+            <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Group of Objects</label>
+                    <div>
+                        <input type="text" class="form-control form-control-lg" id="firstGroupInput" name="firstGroupInput">
+                    </div>
+                    <div>
+                        <input type="text" class="form-control form-control-lg" id="secondGroupInput" name="secondGroupInput">
+                    </div>
+                    <div>
+                        <input type="text" class="form-control form-control-lg" id="thirdGroupInput" name="thirdGroupInput">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Collection</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control form-control-lg" id="collectionInput" name="collectionInput">
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-end">
+                    <a href="/backend/dashboard/" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+            <!-- Tab 4 -->
+
+            <!-- Tab 5 -->
+            <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Content</label>
+                    <div id="holder_add_content_media" class="container-xxl">
+                        {% with content_form_id="holder_add_content_media_form" %}
+                        {% include "backend/treasures/media/add_content_form.html" %}
+                        {% endwith %}
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Photos</label>
+                    <div id="holder_add_photos_media" class="container-xxl">
+                        {% with photos_form_id="holder_add_photos_media_form" %}
+                        {% include "backend/treasures/media/add_photos_form.html" %}
+                        {% endwith %}
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Videos</label>
+                    <div id="holder_add_videos_media" class="container-xxl">
+                        {% with videos_form_id="holder_add_videos_media_form" %}
+                        {% include "backend/treasures/media/add_videos_form.html" %}
+                        {% endwith %}
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-end">
+                    <a href="/backend/dashboard/" class="btn btn-secondary">Cancel</a>
+                    <button id="holder_new_treasure_submit" class="btn btn-success float-end" type="submit">Save Changes</button>
+                </div>
+            </div>
+            <!-- Tab 5 -->
+        </div>
+    </div>
+</form>
