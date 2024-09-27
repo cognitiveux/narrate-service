@@ -16,9 +16,9 @@ Once you have an App password, modify the following file:
 ```narrate-service/server/django_variables.env```
 
 and update the values of the following variables accordingly:
-```SERVER_EMAIL=YOUR_EMAIL@DOMAIN.COM```
-```SERVER_EMAIL_ALIAS=YOUR_EMAIL_ALIAS@DOMAIN.COM```
-```SERVER_EMAIL_PASSWORD=THE_CREATED_APP_PASSWORD```
+- ```SERVER_EMAIL=YOUR_EMAIL@DOMAIN.COM```
+- ```SERVER_EMAIL_ALIAS=YOUR_EMAIL_ALIAS@DOMAIN.COM```
+- ```SERVER_EMAIL_PASSWORD=THE_CREATED_APP_PASSWORD```
 
 ### Set values for the remaining secret keys
 
@@ -28,9 +28,9 @@ You could use an online secret key generator to get random strong secret keys:
 - [LastPass Password Generator](https://www.lastpass.com/features/password-generator)
 
 and update the values of the following variables accordingly:
-```SECRET_KEY_NARRATE_PROJECT='YOUR_PROJECT_SECRET_VALUE'```
-```FLOWER_USER=YOUR_FLOWER_USERNAME_VALUE```
-```FLOWER_PASSWORD='YOUR_FLOWER_SECRET_VALUE'```
+- ```SECRET_KEY_NARRATE_PROJECT='YOUR_PROJECT_SECRET_VALUE'```
+- ```FLOWER_USER=YOUR_FLOWER_USERNAME_VALUE```
+- ```FLOWER_PASSWORD='YOUR_FLOWER_SECRET_VALUE'```
 
 ## Install Docker Engine
 
